@@ -19,7 +19,7 @@ jobs:
           mingw-w64-clang-aarch64-gcc-compat
           mingw-w64-clang-aarch64-go
 
-    - name: Environment
+    - name: Environment MSYS2
       shell: msys2 {0}
       run: |
         env | sort
@@ -29,7 +29,17 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
 
-    - name: Powershell
+    - name: Environment
+      shell: bash
+      run: |
+        env | sort
+        which go
+        go env
+        which gcc && gcc --version
+        which clang && clang --version
+        clang -dM -E -x c nul: || true
+
+    - name: Environement Powershell
       shell: pwsh
       run: |
         Write-Host $env:PATH
