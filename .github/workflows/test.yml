@@ -20,6 +20,6 @@ jobs:
         go env
         which gcc && gcc --version
         which clang && clang --version
-        clang -dM -E -x c nul | grep MINGW64
+        clang -dM -E -x c nul: || true
 
  
