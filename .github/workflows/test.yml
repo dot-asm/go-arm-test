@@ -17,6 +17,7 @@ jobs:
       run: |
         env | sort
         which go
+        pacman -Sy mingw-w64-clang-aarch64-gcc-compat
         go env
         which gcc && gcc --version
         which clang && clang --version
