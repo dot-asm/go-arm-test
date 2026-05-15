@@ -1,0 +1,21 @@
+name: build
+
+on:
+  push:
+    branches:
+    - '***'
+
+jobs:
+  test:
+    runs-on:  windows-11-arm
+
+  steps:
+  - uses: actions/checkout@v6
+
+  - name: Environment
+    shall: bash
+    run: |
+      env | sort
+      which go
+      go env
+ 
