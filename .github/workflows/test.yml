@@ -19,7 +19,7 @@ jobs:
           mingw-w64-clang-aarch64-gcc-compat
 
     - name: Environment
-      shell: bash
+      shell: msys2 {0}
       run: |
         env | sort
         which go
