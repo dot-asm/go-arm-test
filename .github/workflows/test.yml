@@ -29,4 +29,9 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
 
- 
+    - name: Powershell
+      shell: pwsh
+      run: |
+        Write-Host $env:PATH
+        go version
+        go env
