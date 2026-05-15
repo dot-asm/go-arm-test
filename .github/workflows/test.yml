@@ -17,6 +17,7 @@ jobs:
         msystem: CLANGARM64
         install: >-
           mingw-w64-clang-aarch64-gcc-compat
+          mingw-w64-clang-aarch64-go
 
     - name: Environment
       shell: msys2 {0}
