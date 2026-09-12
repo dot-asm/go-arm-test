@@ -13,23 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: msys2/setup-msys2@v2
-      with:
-        msystem: CLANGARM64
-        install: >-
-          mingw-w64-clang-aarch64-gcc-compat
-          mingw-w64-clang-aarch64-go
-
-    - name: Environment MSYS2
-      shell: msys2 {0}
-      run: |
-        env | sort
-        which go
-        go env
-        which gcc && gcc --version
-        which clang && clang --version
-        clang -dM -E -x c nul: || true
-
     - name: Environment
       shell: bash
       run: |
@@ -46,3 +29,20 @@ jobs:
         Write-Host $env:PATH
         go version
         go env
+
+    - uses: msys2/setup-msys2@v2
+      with:
+        msystem: CLANGARM64
+        install: >-
+          mingw-w64-clang-aarch64-gcc-compat
+          mingw-w64-clang-aarch64-go
+
+    - name: Environment MSYS2
+      shell: msys2 {0}
+      run: |
+        env | sort
+        which go
+        go env
+        which gcc && gcc --version
+        which clang && clang --version
+        clang -dM -E -x c nul: || true
