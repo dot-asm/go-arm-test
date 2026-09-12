@@ -22,6 +22,7 @@ jobs:
         which gcc && gcc --version
         which clang && clang --version
         clang -dM -E -x c nul: || true
+        go build a.go || true
 
     - name: Environement Powershell
       shell: pwsh
@@ -46,3 +47,4 @@ jobs:
         which gcc && gcc --version
         which clang && clang --version
         clang -dM -E -x c nul: || true
+        go build a.go || true
