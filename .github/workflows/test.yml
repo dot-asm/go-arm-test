@@ -23,7 +23,7 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
-        ls /clangarm64/bin || true
+        objdump -x $(which bash).exe
 
     - name: Environement Powershell
       shell: pwsh
