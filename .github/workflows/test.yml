@@ -23,7 +23,7 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
-        objdump -x $(which bash).exe
+        objdump -x $(which gcc).exe
 
     - name: Environement Powershell
       shell: pwsh
