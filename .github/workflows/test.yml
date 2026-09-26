@@ -23,6 +23,7 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
+        ls /clang64/bin || true
 
     - name: Environement Powershell
       shell: pwsh
