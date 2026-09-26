@@ -23,7 +23,6 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
-        /c/msys64/usr/bin/bash -c "pacman --noconfirm -S mingw-w64-clang-aarch64-gcc-compat"
 
     - name: Environement Powershell
       shell: pwsh
