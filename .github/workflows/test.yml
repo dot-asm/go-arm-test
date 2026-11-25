@@ -46,5 +46,12 @@ jobs:
         go env
         which gcc && gcc --version
         which clang && clang --version
+
+    - name: check
+      shell: msys2bash.cmd
+      run: |
+         env | sort
+         which gcc && gcc --version
+         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
