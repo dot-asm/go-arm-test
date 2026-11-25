@@ -42,6 +42,7 @@ jobs:
       shell: msys2 {0}
       run: |
         env | sort
+        mount
         which go
         go env
         which gcc && gcc --version
