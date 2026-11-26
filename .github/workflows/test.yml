@@ -31,6 +31,15 @@ jobs:
         go version
         go env
 
+    - name: Prep
+      shell: bash
+      run: ls /c/mingw64 && echo 'C:\mingw64' >> $GITHUB_PATH && cat $GUTHUB_PATH
+
+    - name: Test
+      shell: msys2bash
+      run: |
+        env | sort
+
     - uses: msys2/setup-msys2@v2
       with:
         msystem: CLANGARM64
@@ -50,7 +59,3 @@ jobs:
         clang -dM -E -x c nul: || true
         go build a.go || true
 
-    - name: Test
-      shell: msys2bash
-      run: |
-        env | sort
