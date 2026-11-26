@@ -36,7 +36,7 @@ jobs:
       run: |
         ls /c/msys64
         echo 'c:\msys64\usr\bin' >> $GITHUB_PATH
-        echo 'MSYSTEM=CLANGARM64' >> GITHUB_ENV
+        echo 'MSYSTEM=CLANGARM64' >> $GITHUB_ENV
         echo 'CHERE_INVOKING=1' >> $GITHUB_ENV
 
     - name: Test
