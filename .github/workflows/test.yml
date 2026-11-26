@@ -49,7 +49,7 @@ jobs:
         pacman -S --noconfirm mingw-w64-clang-aarch64-gcc-compat mingw-w64-clang-aarch64-go
 
     - name: Phase 2
-      shell: bash {0}
+      shell: bash -leo pipefail {0}
       run: |
         env | sort
         which go
