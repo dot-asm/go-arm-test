@@ -49,12 +49,12 @@ jobs:
         pacman -S --noconfirm mingw-w64-clang-aarch64-gcc-compat mingw-w64-clang-aarch64-go
 
     - name: Phase 2
-      shell: bash
+      shell: bash {0}
       run: |
         env | sort
         which go
         go env
-        go build a.go || true
+        go build a.go
 
     - uses: msys2/setup-msys2@v2
       with:
