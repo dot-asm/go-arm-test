@@ -38,7 +38,7 @@ jobs:
         echo 'c:\msys64\usr\bin' >> $GITHUB_PATH
         echo 'MSYSTEM=CLANGARM64' >> $GITHUB_ENV
 
-    - name: 
+    - name: Test
     - shell: bash
       run: |
         mount
