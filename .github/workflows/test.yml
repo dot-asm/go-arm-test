@@ -43,6 +43,9 @@ jobs:
       run: |
         mount
         env | sort
+        pacman -Qe
+        echo ---
+        paman -Q
 
     - uses: msys2/setup-msys2@v2
       with:
