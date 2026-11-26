@@ -31,7 +31,7 @@ jobs:
         go version
         go env
 
-    - name: Prep
+    - name: Prep MSYS2
       shell: bash
       run: |
         ls /c/msys64
@@ -39,25 +39,24 @@ jobs:
         echo 'MSYSTEM=CLANGARM64' >> $GITHUB_ENV
         echo 'CHERE_INVOKING=1' >> $GITHUB_ENV
 
-    - name: Test
+    - name: Install dependencies
       shell: bash -leo pipefail {0}
       run: |
         mount
         env | sort
+        pacman -S --noconfirm mingw-w64-clang-aarch64-clang mingw-w64-clang-aarch64-go
         pacman -Qe
         echo ---
         pacman -Q
-        pacman -S --noconfirm mingw-w64-clang-aarch64-clang mingw-w64-clang-aarch64-go
 
-    - name: Phase 2
+    - name: Test
       shell: bash -leo pipefail {0}
       run: |
-        env | sort
         pwd
         which go
         go env
-        cd $GITHUB_WORKSPACE
         go build a.go
+        sort | env
 
     - uses: msys2/setup-msys2@v2
       with:
