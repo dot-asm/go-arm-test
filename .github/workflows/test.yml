@@ -40,7 +40,7 @@ jobs:
         echo 'CHERE_INVOKING=1' >> $GITHUB_ENV
 
     - name: Test
-      shell: bash -leo pipefile {0}
+      shell: bash -leo pipefail {0}
       run: |
         mount
         env | sort
