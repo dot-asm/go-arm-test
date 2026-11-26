@@ -45,7 +45,8 @@ jobs:
         env | sort
         pacman -Qe
         echo ---
-        paman -Q
+        pacman -Q
+        pacman -S mingw-w64-clang-aarch64-gcc-compat mingw-w64-clang-aarch64-go
 
     - uses: msys2/setup-msys2@v2
       with:
