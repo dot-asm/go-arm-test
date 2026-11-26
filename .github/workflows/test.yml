@@ -46,7 +46,11 @@ jobs:
         pacman -Qe
         echo ---
         pacman -Q
-        pacman -S mingw-w64-clang-aarch64-gcc-compat mingw-w64-clang-aarch64-go
+        pacman -S --noconfirm mingw-w64-clang-aarch64-gcc-compat mingw-w64-clang-aarch64-go
+
+    - name: Phase 2
+      shell: bash
+      run: go build a.go
 
     - uses: msys2/setup-msys2@v2
       with:
