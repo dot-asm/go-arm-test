@@ -54,6 +54,7 @@ jobs:
         env | sort
         which go
         go env
+        cd $GITHUB_WORKSPACE
         go build a.go
 
     - uses: msys2/setup-msys2@v2
