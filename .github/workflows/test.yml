@@ -32,14 +32,14 @@ jobs:
         go env
 
     - name: Prep
-    - shell: bash
+      shell: bash
       run: |
         ls /c/msys64
         echo 'c:\msys64\usr\bin' >> $GITHUB_PATH
         echo 'MSYSTEM=CLANGARM64' >> $GITHUB_ENV
 
     - name: Test
-    - shell: bash
+      shell: bash
       run: |
         mount
         env | sort
