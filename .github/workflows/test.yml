@@ -62,7 +62,7 @@ jobs:
         which go
         go env
         go build a.go
-        sort | env
+        env | sort
 
     - uses: msys2/setup-msys2@v2
       if: ${{ runner.os == 'Windows' }}
