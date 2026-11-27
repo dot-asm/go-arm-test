@@ -8,8 +8,11 @@ on:
 
 jobs:
   test:
-    runs-on:  windows-11-arm
+    runs-on:  ${{ matrix.os }}
 
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-11-arm ]
     steps:
     - uses: actions/checkout@v6
 
@@ -25,6 +28,7 @@ jobs:
         go build a.go || true
 
     - name: Environement Powershell
+      if: ${{ runner.os == 'Windows' }}
       shell: pwsh
       run: |
         Write-Host $env:PATH
@@ -32,6 +36,7 @@ jobs:
         go env
 
     - name: Prep MSYS2
+      if: ${{ runner.os == 'Windows' }}
       shell: bash
       run: |
         ls /c/msys64
@@ -41,6 +46,7 @@ jobs:
         /c/msys64/usr/bin/bash -lc 'pacman -S --noconfirm mingw-w64-clang-aarch64-clang mingw-w64-clang-aarch64-go mingw-w64-clang-aarch64-pkgconf'
 
     - name: Install dependencies
+      if: ${{ runner.os == 'Windows' }}
       shell: bash -leo pipefail {0}
       run: |
         mount
@@ -59,6 +65,7 @@ jobs:
         sort | env
 
     - uses: msys2/setup-msys2@v2
+      if: ${{ runner.os == 'Windows' }}
       with:
         msystem: CLANGARM64
         install: >-
@@ -66,6 +73,7 @@ jobs:
           mingw-w64-clang-aarch64-go
 
     - name: Environment MSYS2
+      if: ${{ runner.os == 'Windows' }}
       shell: msys2 {0}
       run: |
         env | sort
@@ -76,4 +84,3 @@ jobs:
         which clang && clang --version
         clang -dM -E -x c nul: || true
         go build a.go || true
-
